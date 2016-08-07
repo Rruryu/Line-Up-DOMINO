@@ -13,10 +13,18 @@ public class PieceMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (Input.GetMouseButtonUp(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit))
+            {
+                
+            }
+        }
 	}
     
-
+    /*
     void OnMouseDown()
     {
         this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
@@ -28,5 +36,5 @@ public class PieceMove : MonoBehaviour {
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
         transform.position = currentPosition;
-    }
+    }*/
 }
