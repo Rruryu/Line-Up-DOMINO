@@ -2,23 +2,26 @@
 using System.Collections;
 using System.Linq;
 
-public class tag : MonoBehaviour {
-
-    private GameObject nearObj;         //最も近いオブジェクト
+public class search : MonoBehaviour {
+    public static bool one = false, two = false, three = false;
+    public static bool four = false, five = false, six = false, none=false;
+    public static GameObject nearObj = null;         //最も近いオブジェクト
     private float searchTime = 0;    //経過時間
 
     // Use this for initialization
     void Start()
     {
-        //最も近かったオブジェクトを取得
         nearObj = serchTag(gameObject, "Respawn");
-        Debug.Log(nearObj);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
+        nearObj = serchTag(gameObject, "Respawn");
+        //Debug.Log(nearObj);
+    
+        
        
     }
 
@@ -27,7 +30,6 @@ public class tag : MonoBehaviour {
     {
         float tmpDis = 0;           //距離用一時変数
         float nearDis = 0;          //最も近いオブジェクトの距離
-        //string nearObjName = "";    //オブジェクト名称
         GameObject targetObj = null; //オブジェクト
 
         //タグ指定されたオブジェクトを配列で取得する
@@ -41,13 +43,11 @@ public class tag : MonoBehaviour {
             if (nearDis == 0 || nearDis > tmpDis)
             {
                 nearDis = tmpDis;
-                //nearObjName = obs.name;
                 targetObj = obs;
             }
 
         }
         //最も近かったオブジェクトを返す
-        //return GameObject.Find(nearObjName);
         return targetObj;
     }
 }
